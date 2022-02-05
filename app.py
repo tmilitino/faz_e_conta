@@ -19,7 +19,7 @@ def display_page(pathname):
     if pathname == '/Sobre':
          return base.layout1
     elif pathname == '/TabAnos':
-         return tabs.layout2
+         return tabs.tab_year
     else:
         return '404'
 
