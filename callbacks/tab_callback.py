@@ -1,5 +1,6 @@
 from dash import Input, Output, State, callback
 from dash import dcc, html
+import dash_bootstrap_components as dbc
 import dash
 
 
@@ -28,9 +29,8 @@ class TabCallback:
         for num in output:
             tabs.append(
                 dcc.Tab(
-                    label=f"Tab {num + 1}",
-                    value=f"tab{num + 1}",
-                    children=[html.Div(num)],
+                    label=f"Ano - {num }",
+                    value=f"tab-ano-{num}",
                 )
             )
         return tabs

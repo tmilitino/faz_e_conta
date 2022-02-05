@@ -1,7 +1,7 @@
 from dash import dcc, html
 
 
-class PageBase:
+class PageSobre:
 
     layout1 = html.Div([
         html.H3('Page 1'),
