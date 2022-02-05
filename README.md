@@ -1,6 +1,6 @@
 # Faz e Conta
 
-Este projeto construido durante a disciplina de visualização de dados da Pós-Graduação do curso de [Análise e Engenharia de Dados](https://www.cesar.school/especializacao-em-analise-e-engenharia-de-dados/) do CESAR.SCHOOL
+Este projeto foi construído durante a disciplina de visualização de dados da Pós-Graduação do curso de [Análise e Engenharia de Dados](https://www.cesar.school/especializacao-em-analise-e-engenharia-de-dados/) do CESAR.SCHOOL
 
 
 ## Objetivo
