@@ -6,6 +6,7 @@ from view import ChartYear
 import plotly.express as px
 from data_transform import LocalData
 
+local_data = LocalData()
 
 @callback(Output('tabs-content-graph-ranking', 'children'),
             Input('tabs-59', 'value'))
@@ -13,7 +14,7 @@ def render_content(tab):
     global local_data
     chart = ChartYear(tab)
     local_data = chart.local_data
-    year = local_data.get_geral_chart()
+    year = chart.get_geral_chart()
     return year
 
 @callback(
