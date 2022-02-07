@@ -13,16 +13,16 @@ class LocalData:
 
         self.df_desp_dept = pd.DataFrame()
 
-        if ano.replace("tab-", "") == "2020":
+        if ano.replace("tab-ano-", "") == "2020":
             df_desp = self.df_bases.df_desp_20
-        elif ano.replace("tab-", "") == "2019":
+        elif ano.replace("tab-ano-", "") == "2019":
             df_desp = self.df_bases.df_desp_19
 
         df_desp = df_desp[df_desp['codLegislatura'] == 56]
         df_desp = df_desp[df_desp['vlrLiquido'] > 0]
         df_desp['mes_ano'] = df_desp.apply(
             lambda x: f"{x.numMes}-{x.numAno}", axis=1)
-        self.self.df_desp_dept = df_desp[~df_desp['cpf'].isna()]
+        self.df_desp_dept = df_desp[~df_desp['cpf'].isna()]
 
     def pie(self,):
         df_dept_pie = self.df_desp_dept[[
@@ -87,40 +87,40 @@ class LocalData:
         df_sum_legenda = df_sum_legenda.merge(
             self.df_bases.df_pos, left_on='sgPartido', right_on='nome')
 
-        print(df_sum_legenda.head())
         return df_sum_legenda
 
     def get_chart_map(self, sgPartido):
-        self.df_desp_dept_vl_map = self.df_desp_dept
-        if sgPartido:
-            if sgPartido == 'SDD':
-                sgPartido = 'SOLIDARIEDADE'
-            self.df_desp_dept_vl_map = self.df_desp_dept[self.df_desp_dept['sgPartido'] == sgPartido]
+        pass
+        # self.df_desp_dept_vl_map = self.df_desp_dept
+        # if sgPartido:
+        #     if sgPartido == 'SDD':
+        #         sgPartido = 'SOLIDARIEDADE'
+        #     self.df_desp_dept_vl_map = self.df_desp_dept[self.df_desp_dept['sgPartido'] == sgPartido]
 
-        self.df_bases.df_cota[['UF', 'VALOR']].groupby(['UF']).sum().sort_values(
-            ['VALOR'], ascending=False).reset_index().rename(columns={'VALOR': 'total_cota'})
+        # self.df_bases.df_cota[['UF', 'VALOR']].groupby(['UF']).sum().sort_values(
+        #     ['VALOR'], ascending=False).reset_index().rename(columns={'VALOR': 'total_cota'})
 
-        self.df_desp_dept_vl_map = self.df_desp_dept_vl_map[['sgUF', 'vlrLiquido', 'txNomeParlamentar']].groupby(
-            ['sgUF']).agg(
-            {'vlrLiquido': np.sum, 'txNomeParlamentar': pd.Series.nunique}).sort_values(['vlrLiquido'],
-                                                                                        ascending=False).reset_index()
-        self.df_desp_dept_vl_map['des_percapt'] = (
-            self.df_desp_dept_vl_map['vlrLiquido']/self.df_desp_dept_vl_map['txNomeParlamentar'])/12
+        # self.df_desp_dept_vl_map = self.df_desp_dept_vl_map[['sgUF', 'vlrLiquido', 'txNomeParlamentar']].groupby(
+        #     ['sgUF']).agg(
+        #     {'vlrLiquido': np.sum, 'txNomeParlamentar': pd.Series.nunique}).sort_values(['vlrLiquido'],
+        #                                                                                 ascending=False).reset_index()
+        # self.df_desp_dept_vl_map['des_percapt'] = (
+        #     self.df_desp_dept_vl_map['vlrLiquido']/self.df_desp_dept_vl_map['txNomeParlamentar'])/12
 
-        self.df_desp_dept_vl_map['vlrLiquido'] = self.df_desp_dept_vl_map['vlrLiquido']
+        # self.df_desp_dept_vl_map['vlrLiquido'] = self.df_desp_dept_vl_map['vlrLiquido']
 
-        merged = self.df_bases.brasil_map.set_index('UF_05').join(
-            self.df_desp_dept_vl_map.set_index('sgUF'))
+        # merged = self.df_bases.brasil_map.set_index('UF_05').join(
+        #     self.df_desp_dept_vl_map.set_index('sgUF'))
 
-        merged = merged.merge(
-            self.df_bases.df_cota, left_on=merged.index, right_on='UF')
-        merged = merged.set_index('UF')
-        merged.vlrLiquido = merged.vlrLiquido.fillna(0)
-        merged.txNomeParlamentar = merged.txNomeParlamentar.fillna(0)
-        merged.VALOR = merged.VALOR.fillna(0)
-        merged.des_percapt = merged.des_percapt.fillna(0)
+        # merged = merged.merge(
+        #     self.df_bases.df_cota, left_on=merged.index, right_on='UF')
+        # merged = merged.set_index('UF')
+        # merged.vlrLiquido = merged.vlrLiquido.fillna(0)
+        # merged.txNomeParlamentar = merged.txNomeParlamentar.fillna(0)
+        # merged.VALOR = merged.VALOR.fillna(0)
+        # merged.des_percapt = merged.des_percapt.fillna(0)
 
-        return merged
+        # return merged
 
     def get_options_candidato(self,):
         return [{"label": f"{x['txNomeParlamentar']} - {x['sgUF']} - {x['sgPartido']} ", "value": x['txNomeParlamentar']} for _, x in self.df_desp_dept[['txNomeParlamentar', 'sgPartido', 'sgUF']].drop_duplicates().iterrows()]

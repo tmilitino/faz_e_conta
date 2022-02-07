@@ -1,6 +1,6 @@
 from dash import Dash, dcc, html, Input, Output, callback
 from view import PageSobre, TabYear
-from callbacks import TabCallback, ChartCallback
+from callbacks import TabCallback, chart_callback
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__, suppress_callback_exceptions=True,

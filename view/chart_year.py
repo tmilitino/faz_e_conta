@@ -5,18 +5,20 @@ from data_transform import LocalData
 
 class ChartYear:
     local_data = object
-
-    def __init__(self, ):
+    year = ''
+    def __init__(self, year):
         self.local_data = LocalData()
+        self.year = year.replace("tab-ano-","")
+        self.local_data.get_df_desp(year)
 
-    def get_geral_chart(self, tab):
+    def get_geral_chart(self):
         return html.Div(style={'margin': '50px', 'background-color': '#f8f8ff'}, children=[
-            html.H3(f'Ano {tab.replace("tab-","")}',),
+            html.H3(f'Ano {self.year}',),
             dbc.Col([
                 dbc.Card([
                     dbc.Col([
                         html.Div(
-                            children=f'Despesas por Legenda - {tab.replace("tab-","")}', style={'margin': '10px'}),
+                            children=f'Despesas por Legenda - {self.year}', style={'margin': '10px'}),
                         dcc.Dropdown(
                             id='dropdown-ranking',
                             options=[{"label": "Valor Líquido Acumulado por partido", "value": "vlrLiquido"},
