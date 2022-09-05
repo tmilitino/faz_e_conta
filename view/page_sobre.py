@@ -8,7 +8,7 @@ class PageSobre:
         dcc.Dropdown(
             id='page-1-dropdown',
             options=[
-                {'label': 'App 1 - {}'.format(i), 'value': i} for i in [
+                {'label': f'App 1 - {i}', 'value': i} for i in [
                     'NYC', 'MTL', 'LA'
                 ]],
         ),
@@ -20,7 +20,7 @@ class PageSobre:
         html.H3('Page 2'),
         dcc.Dropdown(
             options=[
-                {'label': 'App 1 - {}'.format(i), 'value': i} for i in [
+                {'label': f'App 1 - {i}', 'value': i} for i in [
                     'NYC', 'MTL', 'LA'
                 ]],
             id='page-2-dropdown'

@@ -1,3 +1,6 @@
 venv/*
 files/*
 *.pyc
+.env
+*.csv
+*.zip

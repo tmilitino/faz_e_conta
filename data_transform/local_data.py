@@ -12,10 +12,10 @@ class LocalData:
     def get_df_desp(self, ano):
 
         self.df_desp_dept = pd.DataFrame()
-
-        if ano.replace("tab-ano-", "") == "2020":
+        ano_base = ano.replace("tab-ano-", "")
+        if ano_base == "2020":
             df_desp = self.df_bases.df_desp_20
-        elif ano.replace("tab-ano-", "") == "2019":
+        elif ano_base == "2019":
             df_desp = self.df_bases.df_desp_19
 
         df_desp = df_desp[df_desp['codLegislatura'] == 56]

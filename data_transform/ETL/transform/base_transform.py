@@ -1,0 +1,6 @@
+
+class BaseTransform:
+
+    def executor(self):...
+
+    def create_colmun(self, new_column_name, value=None, function=None):...
