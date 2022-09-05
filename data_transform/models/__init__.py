@@ -1,1 +1,2 @@
-from models.facts import migrate
+from models.facts import *
+from models.dimensions import *

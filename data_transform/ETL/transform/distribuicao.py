@@ -2,9 +2,6 @@ import pandas as pd
 import numpy as np
 from ETL.transform import BaseTransform
 
-BaseTransform
-
-
 class DistribuicaoPartido(BaseTransform):
 
     def __init__(self, df_desp):

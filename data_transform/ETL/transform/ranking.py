@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 from ETL.transform import BaseTransform
 
-BaseTransform
-
 
 class RankingPartido(BaseTransform):
 

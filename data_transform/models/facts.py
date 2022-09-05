@@ -14,10 +14,10 @@ class ModelBase(AbstractConcreteBase, Base):
 class FatTotalGastosParlamentar(ModelBase):
     __tablename__ = "fat_total_gastos_parlamentar"
 
-    sg_uf          = Column(String(4))
-    sg_partido     = Column(String)
-    nome           = Column(String(255))
-    valor_liquido  = Column(Float)
+    nome          = Column(String(255))
+    sg_uf         = Column(String(4))
+    sg_partido    = Column(String)
+    valor_liquido = Column(Float)
     
 # FatTotalGastosParlamentar.__table__.drop(connection.get_engine())
 
@@ -32,8 +32,22 @@ class FatRankingPartido(ModelBase):
     __tablename__ = "fat_ranking_partido"
     
     sg_partido    = Column(String)
-    valor_liquido = Column(Float)
     valor_medio   = Column(Float)
+    valor_liquido = Column(Float)
+
+class FatTimeSeiresCandidato(ModelBase):
+    __tablename__ = "fat_time_seires_candidato"
+
+    nome          = Column(String(255))
+    mes_ano       = Column(String)
+    valor_liquido = Column(Float)
+
+class FatDespesaPartido(ModelBase):
+    __tablename__ = "fat_time_seires_candidato"
+
+    sg_partido        = Column(String(255))
+    descricao_despesa = Column(String)
+    valor_liquido     = Column(Float)
 
 class migrate():
     def __init__(self):
