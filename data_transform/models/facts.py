@@ -43,7 +43,7 @@ class FatTimeSeiresCandidato(ModelBase):
     valor_liquido = Column(Float)
 
 class FatDespesaPartido(ModelBase):
-    __tablename__ = "fat_time_seires_candidato"
+    __tablename__ = "fat_despesa_partido"
 
     sg_partido        = Column(String(255))
     descricao_despesa = Column(String)
